@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Біла риба з броколі | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/bila-riba-brokoli Background Removed.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Біла риба з броколі</h1>
+                <p>Легка, дієтична вечеря з високим вмістом легкозасвоюваного білка та клітковини. Біла риба (тріска, хек або судак) практично не містить жиру, а броколі забезпечує організм вітамінами С, К та антиоксидантами. Ідеально для фази сушіння або відновлення.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">290</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">42г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">6г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">16г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Філе білої риби (тріска, хек, минтай, судак)</span><span>150-180 г</span></div>
+            <div class="ingredient-item"><span>Броколі (свіжа або заморожена)</span><span>200 г</span></div>
+            <div class="ingredient-item"><span>Лимон</span><span>½ шт</span></div>
+            <div class="ingredient-item"><span>Оливкова олія</span><span>1 ст.л.</span></div>
+            <div class="ingredient-item"><span>Часник</span><span>1 зубчик</span></div>
+            <div class="ingredient-item"><span>Сіль морська, перець чорний</span><span>за смаком</span></div>
+            <div class="ingredient-item"><span>Свіжий кріп або петрушка</span><span>для подачі</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Підготовка риби:</strong> Філе риби промийте холодною водою, обсушіть паперовим рушником. Перевірте на наявність дрібних кісточок. Посоліть і поперчіть з обох боків. Збризніть соком ¼ лимона.</li>
+                <li><strong>Підготовка броколі:</strong> Броколі розберіть на суцвіття. Якщо використовуєте свіжу — бланшуйте в киплячій підсоленій воді 2-3 хвилини, потім відкиньте на друшляк. Заморожену броколі можна просто розморозити або злегка приварити 1-2 хв.</li>
+                <li><strong>Варіант 1 – На пару:</strong> Найкращий спосіб для збереження соковитості. Викладіть рибу та броколі в пароварку або на решітку над киплячою водою. Готуйте 8-10 хвилин до повної готовності (риба стане матовою і легко розшаровуватиметься).</li>
+                <li><strong>Варіант 2 – Запікання в духовці:</strong> Розігрійте духовку до 180°C. Викладіть рибу та броколі на деко, застелене пергаментом. Збризніть оливковою олією, додайте розчавлений зубчик часнику. Запікайте 15-18 хвилин.</li>
+                <li><strong>Варіант 3 – На сковороді:</strong> Розігрійте антипригарну сковороду з ½ ст.л. оливкової олії. Обсмажте рибу по 3-4 хвилини з кожного боку до рум'яної скоринки. В кінці додайте броколі і прогрійте разом 2 хвилини.</li>
+                <li><strong>Подача:</strong> Викладіть рибу та броколі на тарілку. Полийте залишком оливкової олії, збризніть лимонним соком і посипте свіжою рубаною зеленню.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Біла риба засвоюється швидше, ніж червоне м'ясо, тому це ідеальний вибір для пізньої вечері. Броколі містить індол-3-карбінол, який допомагає регулювати рівень естрогену та підтримує гормональний баланс у атлетів. Якщо потрібно збільшити калорійність (масонабір), додайте 50 г відвареного дикого рису або кіноа.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

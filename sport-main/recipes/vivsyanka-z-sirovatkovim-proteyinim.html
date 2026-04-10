@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вівсянка з сироватковим протеїном | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/vivsyanka-protein Background Removed.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Вівсянка з сироватковим протеїном</h1>
+                <p>Повільні вуглеводи для стабільної енергії та швидкий білок для відновлення м'язів. Ідеальний сніданок перед тренуванням або після нього.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">380</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">32г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">8г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">48г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Вівсяні пластівці (цільнозернові)</span><span>60 г</span></div>
+            <div class="ingredient-item"><span>Сироватковий протеїн (ваніль/шоколад)</span><span>30 г (1 скуп)</span></div>
+            <div class="ingredient-item"><span>Молоко або вода</span><span>250 мл</span></div>
+            <div class="ingredient-item"><span>Ягоди свіжі або заморожені</span><span>50 г</span></div>
+            <div class="ingredient-item"><span>Мигдальні пластівці (опціонально)</span><span>10 г</span></div>
+            <div class="ingredient-item"><span>Кориця мелена</span><span>за смаком</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Варіння вівсянки:</strong> У невеликій каструлі доведіть молоко або воду до кипіння. Додайте вівсяні пластівці, зменшіть вогонь до мінімуму.</li>
+                <li><strong>Варіть 5-7 хвилин:</strong> Періодично помішуйте, щоб каша не пригоріла. Якщо використовуєте пластівці швидкого приготування, достатньо 2-3 хвилин.</li>
+                <li><strong>Охолодження:</strong> Зніміть каструлю з вогню і дайте каші трохи охолонути (1-2 хвилини). Це важливо, бо протеїн не можна додавати в окріп — він згорнеться.</li>
+                <li><strong>Додавання протеїну:</strong> Всипте сироватковий протеїн і ретельно перемішайте до повного розчинення.</li>
+                <li><strong>Ягоди:</strong> Якщо ягоди заморожені, додайте їх разом із протеїном і трохи прогрійте. Якщо свіжі — додайте перед подачею.</li>
+                <li><strong>Подача:</strong> Викладіть кашу в тарілку, посипте мигдальними пластівцями та корицею за бажанням.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Для кращого засвоєння вуглеводів додайте дрібку солі під час варіння. Якщо ви на масонаборі, замініть воду на молоко 2.5% жирності та додайте 1 ч.л. арахісової пасти.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

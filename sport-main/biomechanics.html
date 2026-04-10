@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Біомеханіка | Aero-Motion</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Виправлено: два окремі посилання на шрифти -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container">
+        <div class="logo">Цифровий Атлет.</div>
+        <nav class="main-nav">
+            <a href="index.html">Філософія</a>
+            <a href="anatomy.html">Анатомія</a>
+            <a href="biomechanics.html" style="color: var(--accent);">Біомеханіка</a>
+            <a href="science.html">Біохімія</a>
+            <a href="plan.html" id="nav-protocol" style="display: none;">Протокол</a>
+            <a href="recovery.html">Безпека</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <article class="hero-article">
+        <p class="meta-info">Розділ 02 &mdash; Механіка живої матерії</p>
+        <h1 class="document-title">Біомеханіка</h1>
+        <p class="lead-text">Ми розглядаємо людське тіло не як набір м'язів, а як складну систему важелів, шарнірів та гідравлічних систем, що підпорядковуються законам Ньютона.</p>
+    </article>
+
+    <section id="kinematics" class="content-block">
+        <div class="grid-2">
+            <div class="sticky-side">
+                <h2 class="num-title">01</h2>
+                <h3>Кінематика та динаміка</h3>
+            </div>
+            <div class="text-content">
+                <p>Кожен рух у спорті — це передача імпульсу. Біомеханіка вивчає, як внутрішні сили (скорочення м'язів) взаємодіють із зовнішніми (гравітація, опір повітря, реакція опори).</p>
+                <p><strong>Закон інерції в атлетиці:</strong> Тіло атлета прагне зберегти свій стан спокою або рівномірного руху, поки на нього не подіє сила. Розуміння центру мас (CoM) дозволяє стрибунам у висоту або гімнастам маніпулювати своєю траєкторією в повітрі, навіть не маючи опори.</p>
+                <div class="formula-box">
+                    $F = m \cdot a$ — де твоя сила залежить не лише від маси м'язів, а від здатності нервової системи активувати їх миттєво (акселерація).
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="levers" class="glass-card vast-card section-margin">
+        <h2 class="section-title">Система анатомічних важелів</h2>
+        <div class="levers-grid">
+            <div class="lever-item">
+                <h4>Важіль 1-го роду (Рівновага)</h4>
+                <p>Точка опори знаходиться між силою м'яза та навантаженням. Приклад: тримання голови прямо за допомогою м'язів шиї. Це система для стабільності.</p>
+            </div>
+            <div class="lever-item">
+                <h4>Важіль 2-го роду (Сила)</h4>
+                <p>Навантаження між опорою та силою. Приклад: підйом на носки. Дозволяє переміщувати величезну вагу з мінімальними зусиллями м'язів.</p>
+            </div>
+            <div class="lever-item">
+                <h4>Важіль 3-го роду (Швидкість)</h4>
+                <p>Сила прикладена між опорою та навантаженням. Найпоширеніший у тілі (біцепс). Ми жертвуємо силою заради колосальної амплітуди та швидкості руху.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tissues" class="content-block">
+        <div class="grid-2">
+            <div class="text-content">
+                <h3>Еластична енергія та фасції</h3>
+                <p>М'язи — це лише частина історії. Справжня потужність криється в сполучній тканині. Коли ви присідаєте перед стрибком, ваші сухожилля працюють як пружини, накопичуючи потенційну енергію пружної деформації.</p>
+                <p>Це називається <strong>циклом розтягування-скорочення (SSC)</strong>. Якщо затримка між розтягненням і скороченням занадто довга, енергія розсіюється у вигляді тепла. Саме тому пліометричні тренування (вибухові стрибки) такі ефективні для розвитку атлетизму.</p>
+                
+                <ul class="science-list">
+                    <li><strong>Модуль Юнга:</strong> Показник жорсткості сухожиль. Чим він вищий, тим швидше передається сила від м'яза до кістки.</li>
+                    <li><strong>Гістерезис:</strong> Втрата енергії при деформації тканин. Здорові тканини мають низький гістерезис.</li>
+                </ul>
+            </div>
+            <div class="image-placeholder">
+                <div class="bio-chart"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="deep-dive section-margin">
+        <h2 class="center">Момент сили та вектори навантаження</h2>
+        <p class="center-text">Чому одна й та сама вага відчувається по-різному? Все залежить від плеча сили (moment arm).</p>
+        <div class="glass-card bio-warning">
+            <strong>Важливо:</strong> Збільшення відстані від суглоба до ваги експоненціально збільшує навантаження на сполучну тканину. Розуміння векторів дозволяє тренуватися важко, але безпечно для структури скелета.
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <p>Aero-Motion: Mechanical Integrity Section &copy; 2026</p>
+</footer>
+
+<script src="global.js"></script>
+</body>
+</html>

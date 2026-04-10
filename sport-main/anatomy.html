@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анатомія | Цифровий Атлет</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Специфічні стилі для 3D інтерфейсу */
+        .anatomy-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            margin-top: 40px;
+            min-height: 600px;
+        }
+
+        .controls-panel {
+            padding: 40px;
+            background: #FAFAF7;
+            border-right: 1px solid var(--border-color);
+        }
+
+        #canvas-container {
+            width: 100%;
+            height: 600px;
+            background: #eee; /* Тимчасовий фон поки вантажиться модель */
+            cursor: grab;
+        }
+
+        .control-group { margin-bottom: 25px; }
+        .control-group h4 { margin-bottom: 15px; font-family: 'Lora', serif; }
+        
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .toggle-item input { margin-right: 12px; accent-color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="index.html">Філософія</a>
+                <a href="anatomy.html" style="color: var(--accent);">Анатомія</a>
+                <a href="biomechanics.html">Біомеханіка</a>
+                <a href="science.html">Біохімія</a>
+                <a href="plan.html" id="nav-protocol" style="display: none; font-weight: 600;">Протокол</a>
+                <a href="recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+<main class="container">
+    <article class="hero-article">
+        <p class="meta-info">Розділ 03 &mdash; Візуалізація структур</p>
+        <h1 class="document-title">Інтерактивна Анатомія</h1>
+        <p class="lead-text">Досліджуйте взаємодію тканин у реальному часі.</p>
+    </article>
+
+    <div class="anatomy-grid glass-card">
+        <div class="controls-panel">
+            <div class="control-group">
+                <h4>Візуальні шари</h4>
+                <label class="toggle-item"><input type="checkbox" id="check-skin" checked> Епідерміс</label>
+                <label class="toggle-item"><input type="checkbox" id="check-fat" checked> Підшкірний жир</label>
+                <label class="toggle-item"><input type="checkbox" id="check-muscle" checked> М'язові волокна</label>
+            </div>
+            
+            <div class="control-group" style="margin-top: 40px; border-top: 1px solid #ddd;">
+                <p style="font-size: 0.8rem; color: #666;"><strong>Порада:</strong> Клікніть на шар, щоб дізнатися деталі.</p>
+            </div>
+        </div>
+
+        <div id="canvas-container" style="position: relative; width: 100%; height: 600px;">
+            <div id="info-panel" class="hidden" style="position: absolute; top: 20px; right: 20px; z-index: 100;">
+                <button id="close-btn">&times;</button>
+                <h3 id="info-title"></h3>
+                <p id="info-desc"></p>
+                <ul id="info-tips"></ul>
+            </div>
+        </div>
+    </div> </main>
+
+    <footer class="site-footer" style="margin-top: 100px;">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.8rem;">
+            Цифровий Атлет &copy; 2026 — Анатомічний атлас v1.0
+        </div>
+    </footer>
+
+    <script src="anatomy.js"></script>
+<script src="global.js"></script>
+</body>
+</html>

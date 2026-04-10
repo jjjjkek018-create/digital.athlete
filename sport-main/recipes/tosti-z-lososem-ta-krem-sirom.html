@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тости з лососем та крем-сиром | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/tosti-losos-kremsir-removebg-preview.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Тости з лососем та крем-сиром</h1>
+                <p>Елегантний та поживний сніданок або перекус. Поєднання слабосоленого лосося, багатого на Омега-3, з ніжним вершковим сиром на цільнозерновому хлібі дає ідеальний баланс білків, корисних жирів та складних вуглеводів.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">410</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">22г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">20г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">32г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Хліб цільнозерновий (або житній)</span><span>2 скибки</span></div>
+            <div class="ingredient-item"><span>Лосось слабосолений (сьомга або форель)</span><span>60 г</span></div>
+            <div class="ingredient-item"><span>Крем-сир (філадельфія або аналог)</span><span>30 г</span></div>
+            <div class="ingredient-item"><span>Авокадо (опціонально)</span><span>¼ шт (30 г)</span></div>
+            <div class="ingredient-item"><span>Огірок свіжий</span><span>¼ шт (30 г)</span></div>
+            <div class="ingredient-item"><span>Кріп свіжий</span><span>2-3 гілочки</span></div>
+            <div class="ingredient-item"><span>Лимонний сік</span><span>1 ч.л.</span></div>
+            <div class="ingredient-item"><span>Перець чорний мелений</span><span>за смаком</span></div>
+            <div class="ingredient-item"><span>Рукола або мікс салату</span><span>жменя (для подачі)</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Підготовка хліба:</strong> Підсушіть скибки цільнозернового хліба в тостері або на сухій сковороді до легкої хрусткої скоринки. Дайте трохи охолонути.</li>
+                <li><strong>Підготовка овочів:</strong> Огірок наріжте тонкими кружальцями або слайсами за допомогою овочечистки. Кріп дрібно порубайте. Якщо використовуєте авокадо, розімніть його виделкою з кількома краплями лимонного соку.</li>
+                <li><strong>Намазування основи:</strong> На кожен тост рівномірно нанесіть шар крем-сиру. Якщо використовуєте авокадо, намастіть його поверх крем-сиру або замість нього.</li>
+                <li><strong>Викладання лосося:</strong> Поверх крем-сиру красиво викладіть тонкі скибочки слабосоленого лосося, злегка формуючи хвилі.</li>
+                <li><strong>Додавання овочів:</strong> Зверху розкладіть кружальця огірка, посипте рубаним кропом та свіжозмеленим чорним перцем.</li>
+                <li><strong>Фінальний штрих:</strong> Збризніть тости кількома краплями лимонного соку — це підкреслить смак риби. Подавайте на подушці з руколи або міксу салатного листя.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Для збільшення вмісту білка додайте зверху яйце пашот — це додасть ще 6 г білка та зробить страву ще ситнішою. Якщо ви на сушінні, використовуйте хлібці замість тостів та знежирений крем-сир. Лосось можна замінити на слабосолену форель або навіть консервований тунець у власному соку — вийде бюджетний та не менш корисний варіант.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Біохімія та Метаболізм | Цифровий Атлет</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .advanced-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media(min-width: 992px) { .advanced-grid { grid-template-columns: 400px 1fr; } }
+        
+        .metric-card { background: #F2F3F0; padding: 25px; border-radius: 12px; text-align: center; border: 1px solid var(--border-color); }
+        .metric-value { font-size: 2.5rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 5px; }
+        .metric-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+        
+        .custom-input { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; font-family: inherit; }
+        .hint-text { font-size: 0.75rem; color: #8A9280; display: block; margin-bottom: 5px; }
+
+        .info-box { 
+            background: #fff; 
+            padding: 15px; 
+            border-radius: 8px; 
+            border-left: 3px solid var(--accent); 
+            margin-bottom: 20px; 
+            font-size: 0.85rem;
+            display: none; /* Показується через JS */
+        }
+
+        #generate-plan-btn {
+            width: 100%; padding: 18px; background: var(--accent); color: white;
+            border: none; border-radius: 8px; cursor: pointer; font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        #generate-plan-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="index.html">Філософія</a>
+                <a href="anatomy.html">Анатомія</a>
+                <a href="biomechanics.html">Біомеханіка</a>
+                <a href="science.html" style="color: var(--accent);">Біохімія</a>
+                <a href="plan.html" id="nav-protocol" style="display: none;">Протокол</a>
+                <a href="recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article class="hero-article">
+            <p class="meta-info">Розділ 04 &mdash; Енергетичний обмін</p>
+            <h1 class="document-title">Біохімічний термінал</h1>
+            <p class="lead-text">Розрахуйте метаболічний профіль на основі формули Кетча-МакАрдла.</p>
+        </article>
+
+        <section class="advanced-grid" style="margin-bottom: 60px;">
+            <div class="glass-card" style="padding: 30px;">
+                <h3 style="margin-top: 0; font-family: 'Lora', serif;">Антропометрія</h3>
+                
+                <label class="hint-text">Стать</label>
+                <select id="gender" class="custom-input">
+                    <option value="male">Чоловік</option>
+                    <option value="female">Жінка</option>
+                </select>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <label class="hint-text">Вага (кг)</label>
+                        <input type="number" id="weight" class="custom-input" placeholder="75">
+                    </div>
+                    <div>
+                        <label class="hint-text">Зріст (см)</label>
+                        <input type="number" id="height" class="custom-input" placeholder="180">
+                    </div>
+                </div>
+
+                <label class="hint-text">Вік</label>
+                <input type="number" id="age" class="custom-input" placeholder="25">
+
+                <label class="hint-text">Жир % (залиште порожнім для авторозрахунку)</label>
+                <input type="number" id="bf" class="custom-input" placeholder="15">
+
+                <label class="hint-text">Активність</label>
+                <select id="activity" class="custom-input">
+                    <option value="1.2">Сидячий спосіб</option>
+                    <option value="1.375">Легка (1-3 тренування)</option>
+                    <option value="1.55">Середня (3-5 тренувань)</option>
+                    <option value="1.725">Висока (6-7 тренувань)</option>
+                </select>
+
+                <div id="tooltip-bf" class="info-box"></div>
+                <div id="tooltip-lbm" class="info-box"></div>
+
+                <button id="generate-plan-btn" disabled>Сформувати протокол</button>
+            </div>
+
+            <div class="results-display" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="metric-card"><div id="out-bf" class="metric-value">0%</div><div class="metric-label">Жирова маса</div></div>
+                <div class="metric-card"><div id="out-lbm" class="metric-value">0</div><div class="metric-label">Суха маса (кг)</div></div>
+                <div class="metric-card" style="grid-column: span 2;"><div id="out-bmr" class="metric-value">0</div><div class="metric-label">Базальний метаболізм (BMR)</div></div>
+                <div class="metric-card" style="grid-column: span 2; background: #222; color: white;">
+                    <div id="out-tdee" class="metric-value" style="color: #fff;">0</div>
+                    <div class="metric-label" style="color: #888;">Денна витрата (TDEE)</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="science.js"></script>
+    <!-- ДОДАНО: глобальний скрипт для оновлення навігації -->
+    <script src="global.js"></script>
+</body>
+</html>

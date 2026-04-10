@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Омлет з овочами | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/omlet-ovochi Background Removed.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Омлет з овочами</h1>
+                <p>Універсальна страва для будь-якого прийому їжі. Пухкий омлет з яскравими овочами забезпечує організм повноцінним білком, клітковиною та вітамінами. Швидко готується, легко засвоюється і дає тривале відчуття ситості без важкості.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">340</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">24г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">22г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">12г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Яйця курячі</span><span>3 шт</span></div>
+            <div class="ingredient-item"><span>Молоко 2.5% (або вода для легкості)</span><span>2 ст.л.</span></div>
+            <div class="ingredient-item"><span>Перець болгарський</span><span>½ шт (60 г)</span></div>
+            <div class="ingredient-item"><span>Помідор</span><span>1 шт (80 г)</span></div>
+            <div class="ingredient-item"><span>Цибуля ріпчаста (або зелена)</span><span>¼ шт (30 г)</span></div>
+            <div class="ingredient-item"><span>Шпинат свіжий (опціонально)</span><span>жменя (20 г)</span></div>
+            <div class="ingredient-item"><span>Оливкова олія або вершкове масло</span><span>1 ст.л.</span></div>
+            <div class="ingredient-item"><span>Сіль, чорний перець</span><span>за смаком</span></div>
+            <div class="ingredient-item"><span>Свіжа зелень (кріп, петрушка)</span><span>для подачі</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Підготовка овочів:</strong> Болгарський перець наріжте тонкою соломкою або дрібними кубиками. Помідор наріжте кубиками, видаливши зайву рідину та насіння. Цибулю дрібно порубайте. Шпинат промийте та обсушіть.</li>
+                <li><strong>Обсмажування овочів:</strong> Розігрійте антипригарну сковороду з ½ ст.л. оливкової олії на середньому вогні. Викладіть цибулю та перець, обсмажуйте 2-3 хвилини до м'якості. Додайте помідори і готуйте ще 1-2 хвилини, поки вони не пустять сік.</li>
+                <li><strong>Яєчна суміш:</strong> У мисці збийте яйця виделкою або вінчиком з молоком, сіллю та перцем до однорідності. Збивайте не надто інтенсивно — достатньо, щоб білок і жовток з'єдналися.</li>
+                <li><strong>Додавання шпинату:</strong> Якщо використовуєте шпинат, додайте його до овочів на сковороді і прогрійте 30 секунд, поки листя не зів'яне.</li>
+                <li><strong>Приготування омлету:</strong> Рівномірно розподіліть овочі по сковороді. Додайте ще ½ ст.л. олії, якщо потрібно. Вилийте яєчну суміш поверх овочів. Зменшіть вогонь до мінімуму, накрийте кришкою.</li>
+                <li><strong>Готування під кришкою:</strong> Готуйте 5-7 хвилин, не перемішуючи. Омлет має повністю схопитися зверху і стати пухким завдяки пару під кришкою.</li>
+                <li><strong>Подача:</strong> Обережно перекладіть омлет на тарілку за допомогою лопатки (можна скласти навпіл). Посипте свіжою рубаною зеленню. Подавайте гарячим.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Для збільшення вмісту білка додайте 30 г тертого сиру (моцарела або сулугуні) за 2 хвилини до готовності. Якщо ви на масонаборі, подавайте омлет зі скибкою цільнозернового хліба або додайте 50 г відвареної кіноа. Овочі можна змінювати залежно від сезону: кабачок, гриби, цвітна капуста — все чудово поєднується з яйцями.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

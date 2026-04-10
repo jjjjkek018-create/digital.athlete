@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тунець з пастою | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/tunets-pasta Background Removed.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Тунець з пастою</h1>
+                <p>Швидкий, бюджетний та неймовірно поживний обід. Консервований тунець — джерело високоякісного білка та Омега-3, а паста з твердих сортів пшениці забезпечує тривалу енергію. Доповнено ароматним соусом песто або томатами.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">510</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">38г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">14г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">58г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Паста (спагеті, пенне або фузіллі)</span><span>80 г (суха)</span></div>
+            <div class="ingredient-item"><span>Тунець консервований (у власному соку)</span><span>1 банка (140-160 г)</span></div>
+            <div class="ingredient-item"><span>Помідори чері</span><span>100 г (10-12 шт)</span></div>
+            <div class="ingredient-item"><span>Часник</span><span>2 зубчики</span></div>
+            <div class="ingredient-item"><span>Оливкова олія extra virgin</span><span>1.5 ст.л.</span></div>
+            <div class="ingredient-item"><span>Соус песто (або свіжий базилік)</span><span>1 ст.л.</span></div>
+            <div class="ingredient-item"><span>Каперси (опціонально)</span><span>1 ч.л.</span></div>
+            <div class="ingredient-item"><span>Сіль, чорний перець</span><span>за смаком</span></div>
+            <div class="ingredient-item"><span>Пластівці червоного перцю (чілі)</span><span>дрібка</span></div>
+            <div class="ingredient-item"><span>Пармезан тертий (опціонально)</span><span>10 г</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Варіння пасти:</strong> У великій каструлі доведіть до кипіння підсолену воду (1 л води на 100 г пасти, 10 г солі). Закиньте пасту і варіть згідно з інструкцією на упаковці до стану al dente (твердувата всередині).</li>
+                <li><strong>Підготовка інгредієнтів:</strong> Поки вариться паста, злийте рідину з консервованого тунця, розімніть його виделкою на великі шматочки. Помідори чері розріжте на половинки або четвертинки. Часник тонко наріжте пластинками.</li>
+                <li><strong>Ароматизація олії:</strong> У великій сковороді на середньому вогні розігрійте оливкову олію. Додайте нарізаний часник і обсмажуйте 1-2 хвилини до появи аромату (не дайте йому підгоріти). За бажанням додайте пластівці чілі.</li>
+                <li><strong>Додавання тунця та помідорів:</strong> Додайте в сковороду розімнений тунець і половинки помідорів чері. Прогрівайте 2-3 хвилини, обережно перемішуючи, щоб тунець не перетворився на кашу.</li>
+                <li><strong>З'єднання з пастою:</strong> Готову пасту відкиньте на друшляк (збережіть 50 мл води від варіння). Перекладіть пасту в сковороду до тунця. Додайте соус песто, каперси та трохи збереженої води для кремової консистенції.</li>
+                <li><strong>Фінальне перемішування:</strong> Акуратно перемішайте всі інгредієнти на середньому вогні протягом 1 хвилини. Поперчіть свіжозмеленим перцем.</li>
+                <li><strong>Подача:</strong> Викладіть пасту на тарілку. За бажанням посипте тертим пармезаном та прикрасьте свіжим листям базиліку.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Використовуйте тунець у власному соку, а не в олії — це зменшує калорійність страви на 50-70 ккал без втрати білка. Для збільшення кількості овочів додайте жменю свіжого шпинату або руколи перед подачею — вони злегка зів'януть від тепла пасти. Якщо ви на масонаборі, збільште порцію пасти до 100 г (сухої) та додайте 15 г кедрових горішків.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

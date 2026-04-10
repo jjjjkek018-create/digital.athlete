@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яловичий стейк з картопляним пюре | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/yalovichiy-steyk-pyure-removebg-preview.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Яловичий стейк з картопляним пюре</h1>
+                <p>Ситна та поживна страва для атлетів, що працюють над набором м'язової маси. Яловичина багата на залізо, креатин та вітамін B12, а картопляне пюре забезпечує швидке поповнення глікогену після важкого тренування.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">580</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">40г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">24г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">50г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Яловичий стейк (вирізка або тонкий край)</span><span>120-150 г</span></div>
+            <div class="ingredient-item"><span>Картопля</span><span>200 г (2 середні)</span></div>
+            <div class="ingredient-item"><span>Молоко 2.5%</span><span>50 мл</span></div>
+            <div class="ingredient-item"><span>Вершкове масло</span><span>10 г</span></div>
+            <div class="ingredient-item"><span>Часник</span><span>1 зубчик</span></div>
+            <div class="ingredient-item"><span>Свіжий розмарин або чебрець</span><span>1 гілочка</span></div>
+            <div class="ingredient-item"><span>Оливкова олія</span><span>1 ст.л.</span></div>
+            <div class="ingredient-item"><span>Сіль морська, перець чорний</span><span>за смаком</span></div>
+            <div class="ingredient-item"><span>Зелений горошок (заморожений)</span><span>80 г</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Підготовка стейка:</strong> Дістаньте яловичину з холодильника за 30-40 хвилин до приготування, щоб вона досягла кімнатної температури. Промокніть паперовим рушником. Щедро посоліть і поперчіть з обох боків.</li>
+                <li><strong>Картопляне пюре:</strong> Картоплю очистіть, наріжте кубиками, залийте холодною водою і варіть до готовності (15-20 хв після закипання). Злийте воду, додайте тепле молоко, вершкове масло, дрібку солі та ретельно розімніть до однорідної кремової консистенції.</li>
+                <li><strong>Зелений горошок:</strong> Заморожений горошок залийте окропом на 2-3 хвилини або бланшуйте в киплячій воді 1-2 хв. Відкиньте на друшляк.</li>
+                <li><strong>Смаження стейка:</strong> Розігрійте важку сковороду (краще чавунну) на сильному вогні. Змастіть стейк оливковою олією, а не лийте на сковороду. Викладіть м'ясо і смажте по 2-3 хвилини з кожного боку для ступеня прожарювання Medium Rare (залежить від товщини).</li>
+                <li><strong>Ароматизація:</strong> За хвилину до готовності додайте в сковороду розчавлений зубчик часнику, гілочку розмарину та шматочок вершкового масла (5 г). Поливайте стейк цим ароматним маслом за допомогою ложки.</li>
+                <li><strong>Відпочинок стейка:</strong> Перекладіть готовий стейк на тарілку, накрийте фольгою і дайте "відпочити" 5-7 хвилин — це дозволить сокам рівномірно розподілитися всередині м'яса.</li>
+                <li><strong>Подача:</strong> Викладіть на тарілку порцію картопляного пюре, поруч — стейк та зелений горошок. Полийте м'ясо соками, що виділилися під час відпочинку.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Яловичина — чудове джерело гемового заліза, яке критично важливе для транспортування кисню під час тренувань на витривалість. Для більш пісного варіанту використовуйте яловичу вирізку без жиру. Якщо ви на масонаборі, додайте до пюре 20 г тертого пармезану. Стейк можна замаринувати в суміші соєвого соусу, оливкової олії та часнику на 2-4 години — це зробить його ще ніжнішим.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

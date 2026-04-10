@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курячі котлети на пару з цвітною капустою | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/kuryachi-kotleti-paru Background Removed.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Курячі котлети на пару з цвітною капустою</h1>
+                <p>Дієтична, ніжна та соковита вечеря без зайвого жиру. Приготування на пару зберігає всі корисні речовини курячого філе та цвітної капусти. Ідеальний вибір для фази сушіння або легкого відновлення після тренування.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">320</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">42г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">10г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">16г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Куряче філе (грудка)</span><span>200 г</span></div>
+            <div class="ingredient-item"><span>Цвітна капуста</span><span>200 г</span></div>
+            <div class="ingredient-item"><span>Цибуля ріпчаста</span><span>½ шт (40 г)</span></div>
+            <div class="ingredient-item"><span>Яйце куряче</span><span>1 шт (маленьке)</span></div>
+            <div class="ingredient-item"><span>Вівсяні пластівці (або панірувальні сухарі)</span><span>1 ст.л.</span></div>
+            <div class="ingredient-item"><span>Сіль, чорний перець</span><span>за смаком</span></div>
+            <div class="ingredient-item"><span>Сушений часник, паприка</span><span>по ½ ч.л.</span></div>
+            <div class="ingredient-item"><span>Свіжа зелень (кріп, петрушка)</span><span>для подачі</span></div>
+            <div class="ingredient-item"><span>Лимонний сік</span><span>для подачі</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Підготовка фаршу:</strong> Куряче філе промийте, обсушіть, наріжте невеликими шматочками. Цибулю розріжте на 4 частини. Пропустіть курку та цибулю через м'ясорубку або подрібніть у блендері до однорідної маси.</li>
+                <li><strong>Додавання інгредієнтів:</strong> До фаршу додайте яйце, вівсяні пластівці (вони вберуть зайву вологу), сіль, перець, сушений часник та паприку. Ретельно вимішайте фарш руками до однорідності.</li>
+                <li><strong>Формування котлет:</strong> Злегка змочіть руки водою, щоб фарш не прилипав. Сформуйте 4-5 невеликих котлет овальної форми, товщиною близько 1.5-2 см.</li>
+                <li><strong>Підготовка цвітної капусти:</strong> Цвітну капусту розберіть на невеликі суцвіття, промийте. Якщо суцвіття великі, розріжте їх навпіл.</li>
+                <li><strong>Приготування на пару:</strong> У пароварку або мультиварку з режимом "на пару" налийте воду. На решітку викладіть котлети в один шар, поруч розкладіть суцвіття цвітної капусти. Злегка посоліть капусту.</li>
+                <li><strong>Час приготування:</strong> Готуйте на пару 20-25 хвилин. Котлети мають стати пружними та білими всередині (перевірте, розрізавши одну). Цвітна капуста повинна легко проколюватися виделкою, але залишатися трохи хрусткою.</li>
+                <li><strong>Альтернативний спосіб (без пароварки):</strong> У велику каструлю налийте воду на 2-3 см, встановіть зверху друшляк або сито так, щоб воно не торкалося води. Викладіть котлети та капусту, накрийте кришкою і готуйте на середньому вогні 20-25 хв.</li>
+                <li><strong>Подача:</strong> Викладіть котлети та цвітну капусту на тарілку. Збризніть лимонним соком і посипте свіжою рубаною зеленню.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Приготування на пару — найкращий спосіб зберегти вітаміни групи B у курячому філе та вітамін C у цвітній капусті. Для різноманітності додайте у фарш трохи тертого сиру (20 г) або дрібно порубану зелень безпосередньо в котлети. Якщо ви на масонаборі, подавайте з 80 г відвареного дикого рису або булгуру.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

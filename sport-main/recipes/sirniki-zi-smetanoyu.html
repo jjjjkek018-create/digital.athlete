@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сирники зі сметаною | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/sirniki-smetana Background Removed.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Сирники зі сметаною</h1>
+                <p>Традиційна українська страва з кисломолочного сиру. Ніжні, золотаві сирники — чудове джерело повільного білка та кальцію. Ідеальний варіант для сніданку або перекусу.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">420</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">32г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">18г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">30г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Кисломолочний сир 5% жирності</span><span>200 г</span></div>
+            <div class="ingredient-item"><span>Яйце куряче</span><span>1 шт</span></div>
+            <div class="ingredient-item"><span>Борошно пшеничне (або вівсяне)</span><span>30 г + для панірування</span></div>
+            <div class="ingredient-item"><span>Цукор (або підсолоджувач)</span><span>1 ст.л.</span></div>
+            <div class="ingredient-item"><span>Ванільний цукор або екстракт ванілі</span><span>1 ч.л.</span></div>
+            <div class="ingredient-item"><span>Сіль</span><span>дрібка</span></div>
+            <div class="ingredient-item"><span>Олія для смаження (кокосова або вершкове масло)</span><span>2 ст.л.</span></div>
+            <div class="ingredient-item"><span>Сметана 15% (для подачі)</span><span>50 г</span></div>
+            <div class="ingredient-item"><span>Ягоди або мед (опціонально)</span><span>для прикраси</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Підготовка сиру:</strong> Якщо кисломолочний сир надто вологий, відкиньте його на марлю або сито, щоб стекла зайва сироватка. Сухий сир — запорука пишних сирників.</li>
+                <li><strong>Замішування тіста:</strong> У глибокій мисці розімніть сир виделкою. Додайте яйце, цукор, ваніль, сіль та борошно. Ретельно перемішайте до однорідної маси. Тісто має бути м'яким, але тримати форму.</li>
+                <li><strong>Формування сирників:</strong> Присипте робочу поверхню борошном. З тіста сформуйте ковбаску діаметром 5-6 см і наріжте на шайбочки товщиною 2 см. Кожну шайбочку обваляйте в борошні та злегка приплюсніть, формуючи акуратний сирник.</li>
+                <li><strong>Смаження:</strong> Розігрійте сковороду з антипригарним покриттям на середньому вогні. Додайте олію або вершкове масло. Викладіть сирники, залишаючи між ними простір.</li>
+                <li><strong>Готування:</strong> Смажте 3-4 хвилини з одного боку до рум'яної скоринки. Переверніть і смажте ще 3-4 хвилини під кришкою, щоб сирники пропарилися всередині.</li>
+                <li><strong>Подача:</strong> Готові сирники викладіть на паперовий рушник, щоб прибрати зайвий жир. Подавайте теплими зі сметаною, ягодами або невеликою кількістю меду.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Для зменшення калорійності використовуйте кисломолочний сир 0-2% жирності та смажте на сухій антипригарній сковороді. Замініть цукор на еритритол або стевію. Для підвищення вмісту білка додайте в тісто 20 г ванільного протеїну (зменшивши кількість борошна). Сирники чудово зберігаються в холодильнику до 2 днів — ідеальний meal prep!</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

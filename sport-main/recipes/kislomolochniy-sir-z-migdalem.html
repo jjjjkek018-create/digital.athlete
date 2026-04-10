@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кисломолочний сир з мигдалем | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/syr-migdal-removebg-preview.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Кисломолочний сир з мигдалем</h1>
+                <p>Ідеальний варіант легкої вечері або перекусу перед сном. Казеїновий білок кисломолочного сиру забезпечує повільне вивільнення амінокислот протягом ночі, а мигдаль додає корисні жири та вітамін Е для відновлення м'язів.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">310</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">32г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">16г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">10г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Кисломолочний сир 5% жирності</span><span>200 г</span></div>
+            <div class="ingredient-item"><span>Мигдаль сирий (або підсушений)</span><span>20 г (приблизно 15-18 шт)</span></div>
+            <div class="ingredient-item"><span>Кориця мелена</span><span>½ ч.л.</span></div>
+            <div class="ingredient-item"><span>Ванільний екстракт (або ванілін)</span><span>кілька крапель</span></div>
+            <div class="ingredient-item"><span>Мед (опціонально)</span><span>1 ч.л.</span></div>
+            <div class="ingredient-item"><span>Ягоди свіжі або заморожені (для подачі)</span><span>30 г</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Підготовка сиру:</strong> Якщо кисломолочний сир зернистий і сухий, можна додати 1-2 ст.л. грецького йогурту або нежирної сметани для більш кремової консистенції. Розімніть сир виделкою до однорідності.</li>
+                <li><strong>Підготовка мигдалю:</strong> Мигдаль можна використовувати сирим або злегка підсушити на сухій сковороді 2-3 хвилини для посилення аромату. Крупно порубайте ножем або залиште цілим — залежно від ваших вподобань.</li>
+                <li><strong>Змішування:</strong> У мисці з'єднайте кисломолочний сир, мелену корицю та ванільний екстракт. Ретельно перемішайте. Додайте мед, якщо хочете отримати солодший смак (врахуйте, що це додасть ~25 ккал).</li>
+                <li><strong>Додавання мигдалю:</strong> Всипте подрібнений мигдаль у сирну масу та акуратно перемішайте. Можна залишити трохи мигдалю для прикраси зверху.</li>
+                <li><strong>Охолодження (опціонально):</strong> Накрийте миску харчовою плівкою і поставте в холодильник на 15-20 хвилин — охолоджений сир має приємнішу консистенцію, особливо влітку.</li>
+                <li><strong>Подача:</strong> Викладіть сирну масу в піалу або тарілку, прикрасьте ягодами та залишком мигдальних горіхів. Можна додатково посипати дрібкою кориці.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Кисломолочний сир містить казеїн — білок, який засвоюється 6-8 годин, тому ця страва ідеальна перед сном для запобігання нічному катаболізму. Мигдаль є джерелом магнію, який сприяє розслабленню м'язів та покращує якість сну. Якщо ви на сушінні, використовуйте сир 0-2% жирності та виключіть мед. Для масонабору — додайте 15 г арахісової пасти або 20 г темного шоколаду 85%+.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

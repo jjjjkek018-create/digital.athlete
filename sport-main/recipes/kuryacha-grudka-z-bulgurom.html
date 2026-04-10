@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Куряча грудка з булгуром | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/kuryacha-grudka-bulgur Background Removed.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Куряча грудка з булгуром</h1>
+                <p>Класика спортивного харчування: соковите куряче філе з розсипчастим булгуром та тушкованими овочами. Високий вміст білка, складні вуглеводи та клітковина роблять цю страву ідеальною для відновлення після тренування.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">490</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">44г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">12г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">50г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Куряче філе (грудка)</span><span>150 г</span></div>
+            <div class="ingredient-item"><span>Булгур (сухий)</span><span>80 г</span></div>
+            <div class="ingredient-item"><span>Морква</span><span>1 шт (80 г)</span></div>
+            <div class="ingredient-item"><span>Цибуля ріпчаста</span><span>½ шт (50 г)</span></div>
+            <div class="ingredient-item"><span>Перець болгарський</span><span>½ шт (60 г)</span></div>
+            <div class="ingredient-item"><span>Помідор</span><span>1 шт (100 г)</span></div>
+            <div class="ingredient-item"><span>Оливкова олія</span><span>1 ст.л.</span></div>
+            <div class="ingredient-item"><span>Часник</span><span>1 зубчик</span></div>
+            <div class="ingredient-item"><span>Томатна паста</span><span>1 ч.л.</span></div>
+            <div class="ingredient-item"><span>Сіль, чорний перець</span><span>за смаком</span></div>
+            <div class="ingredient-item"><span>Паприка солодка, зіра</span><span>по ½ ч.л.</span></div>
+            <div class="ingredient-item"><span>Вода або курячий бульйон</span><span>200 мл</span></div>
+            <div class="ingredient-item"><span>Свіжа петрушка</span><span>для подачі</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Підготовка курки:</strong> Куряче філе промийте, обсушіть паперовим рушником. Наріжте кубиками 2-3 см. Посоліть, поперчіть, додайте паприку.</li>
+                <li><strong>Обсмажування курки:</strong> Розігрійте глибоку сковороду або сотейник з 1 ч.л. оливкової олії. Обсмажте курячі шматочки на середньому вогні 5-7 хвилин до золотавої скоринки. Вийміть курку на тарілку.</li>
+                <li><strong>Підготовка овочів:</strong> Цибулю наріжте дрібними кубиками, моркву натріть на крупній тертці, болгарський перець наріжте соломкою, помідор — кубиками, часник подрібніть.</li>
+                <li><strong>Тушкування овочів:</strong> У тій самій сковороді додайте ще 1 ч.л. олії. Обсмажте цибулю до прозорості (2-3 хв), додайте моркву та перець, готуйте ще 3-4 хвилини. Додайте часник і томатну пасту, перемішайте.</li>
+                <li><strong>Додавання булгуру:</strong> До овочів додайте помідори та сухий булгур. Перемішайте, щоб крупа просочилася соками.</li>
+                <li><strong>З'єднання та варіння:</strong> Поверніть курку в сковороду, додайте зіру, сіль, перець. Залийте гарячою водою або бульйоном (200 мл). Доведіть до кипіння, потім зменшіть вогонь до мінімуму, накрийте кришкою і тушкуйте 15-18 хвилин до повного вбирання рідини та готовності булгуру.</li>
+                <li><strong>Подача:</strong> Зніміть з вогню, дайте постояти під кришкою 5 хвилин. При подачі посипте свіжою рубаною петрушкою.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Булгур — це цільнозернова крупа з низьким глікемічним індексом, яка надовго забезпечує відчуття ситості. Для збільшення вмісту білка додайте до овочів 50 г консервованого нуту. Якщо ви на масонаборі, подавайте страву з ложкою грецького йогурту або посипте тертим сиром. Страва чудово зберігається в холодильнику до 3 днів — ідеальний meal prep!</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>

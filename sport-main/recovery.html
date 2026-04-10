@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реабілітація | Цифровий Атлет</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Специфічні стилі для травматологічного хабу */
+        .recovery-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            margin: 40px 0;
+            align-items: start;
+        }
+
+        /* Список травм зліва */
+        .injury-sidebar {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            position: sticky;
+            top: 20px;
+        }
+
+        .injury-category {
+            background: #F2F3F0;
+            padding: 10px 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .injury-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.2s ease;
+        }
+
+        .injury-item:hover { background: var(--bg-color); color: var(--accent); }
+        .injury-item.active { 
+            background: white; 
+            color: var(--accent); 
+            border-left: 4px solid var(--accent);
+            font-weight: 500;
+        }
+
+        /* Вікно протоколу справа */
+        .protocol-viewer {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            min-height: 600px;
+        }
+
+        .emergency-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .badge-warning { background: #FFF3CD; color: #856404; }
+        .badge-danger { background: #F8D7DA; color: #721C24; }
+        .badge-safe { background: #D4EDDA; color: #155724; }
+
+        .protocol-steps { margin-top: 30px; }
+        .protocol-step {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 2px solid var(--accent);
+        }
+
+        .protocol-step strong { display: block; margin-bottom: 5px; color: var(--text-main); }
+        .protocol-step p { margin: 0; font-size: 0.95rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+    <div class="container">
+        <div class="logo">Цифровий Атлет.</div>
+        <nav class="main-nav">
+            <a href="index.html">Філософія</a>
+            <a href="anatomy.html">Анатомія</a>
+            <a href="biomechanics.html">Біомеханіка</a>
+            <a href="science.html">Біохімія</a>
+            <a href="plan.html" id="nav-protocol" style="display: none;">Протокол</a>
+            <a href="recovery.html" style="color: var(--accent);">Безпека</a>
+        </nav>
+    </div>
+</header>
+
+    <main class="container">
+        <article class="hero-article">
+            <p class="meta-info">Розділ 05 &mdash; Травматологія та Регенерація</p>
+            <h1 class="document-title">База знань: Протоколи невідкладної допомоги.</h1>
+            <p class="lead-text">Інтерактивний класифікатор спортивних травм. Оберіть тип ушкодження для отримання покрокового біомеханічного алгоритму відновлення.</p>
+        </article>
+
+        <div class="recovery-layout">
+            <aside class="injury-sidebar">
+                <div class="injury-category">М'які тканини</div>
+                <div class="injury-item active" onclick="loadInjury('sprain')">Розтягнення зв'язок</div>
+                <div class="injury-item" onclick="loadInjury('strain')">Надрив м'язових волокон</div>
+                <div class="injury-item" onclick="loadInjury('tendonitis')">Тендиніт (Запалення)</div>
+                
+                <div class="injury-category">Кісткова система</div>
+                <div class="injury-item" onclick="loadInjury('stress_fracture')">Стресовий перелом</div>
+                <div class="injury-item" onclick="loadInjury('shin_splints')">Шинсплінт (Окістя)</div>
+                
+                <div class="injury-category">Системні та гострі</div>
+                <div class="injury-item" onclick="loadInjury('concussion')">Струс мозку (MTBI)</div>
+                <div class="injury-item" onclick="loadInjury('heat_stroke')">Тепловий удар</div>
+                <div class="injury-item" onclick="loadInjury('cramps')">М'язові судоми</div>
+            </aside>
+
+            <section class="protocol-viewer" id="protocol-viewer">
+                </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Дослідницький проєкт «Цифровий Атлет». Сектор Біо-Безпеки &copy; 2026.</p>
+        </div>
+    </footer>
+
+    <script>
+        const injuryDatabase = {
+            sprain: {
+                title: "Розтягнення зв'язок (Ligament Sprain)",
+                type: "badge-safe",
+                typeText: "Середній ризик",
+                bio: "Пошкодження колагенових волокон, що з'єднують кістки. Найчастіше виникає через перевищення амплітуди руху в суглобі.",
+                protocol: [
+                    { s: "REST", d: "Повна іммобілізація. Не тестуйте суглоб 'на міцність' у перші 48 годин." },
+                    { s: "ICE", d: "Кріотерапія по 15 хв для звуження судин і зменшення ексудату (набряку)." },
+                    { s: "COMPRESSION", d: "Еластичне бинтування для механічного обмеження розливу рідини в тканинах." },
+                    { s: "ELEVATION", d: "Підйом кінцівки вище рівня атріуму (серця) для венозного відтоку." }
+                ]
+            },
+            strain: {
+                title: "Надрив м'яза (Muscle Strain)",
+                type: "badge-warning",
+                typeText: "Високий ризик",
+                bio: "Розрив міоцитів через надмірне ексцентричне навантаження. Супроводжується внутрішньом'язовою гематомою.",
+                protocol: [
+                    { s: "Зупинка", d: "Продовження активності перетворить мікронадрив на повний розрив, що потребує хірургії." },
+                    { s: "Захист", d: "Уникайте будь-якого розтягування (stretching) пошкодженого м'яза в перші 3 дні." },
+                    { s: "Регенерація", d: "Через 72 години — легке тепло та масаж для стимуляції кровотоку в зоні рубцювання." }
+                ]
+            },
+            tendonitis: {
+                title: "Тендиніт (Overuse Injury)",
+                type: "badge-safe",
+                typeText: "Хронічний стан",
+                bio: "Запалення сухожилля через кумулятивний стрес. Виникає, коли швидкість руйнування колагену перевищує швидкість його синтезу.",
+                protocol: [
+                    { s: "Аналіз навантаження", d: "Зменшення об'єму тренувань на 50% до зникнення больового синдрому." },
+                    { s: "Ексцентричні вправи", d: "Повільні фази опускання ваги зміцнюють структуру сухожилля без осьового перевантаження." }
+                ]
+            },
+            stress_fracture: {
+                title: "Стресовий перелом",
+                type: "badge-danger",
+                typeText: "Критичний стан",
+                bio: "Мікротріщини в кістці через постійні ударні навантаження (біг по асфальту) при дефіциті мінералізації.",
+                protocol: [
+                    { s: "Повна розгрузка", d: "Виключення ударного навантаження на 6-8 тижнів. Використання ортезів." },
+                    { s: "Дієтологія", d: "Збільшення споживання Кальцію та Вітаміну D3 [PubMed ID: 29110645]." }
+                ]
+            },
+            concussion: {
+                title: "Струс мозку (MTBI)",
+                type: "badge-danger",
+                typeText: "Неврологічна загроза",
+                bio: "Легка черепно-мозкова травма. Мозок вдаряється об внутрішню частину черепа, викликаючи хімічні зміни.",
+                protocol: [
+                    { s: "Когнітивний спокій", d: "Жодних екранів, читання чи інтенсивного світла протягом 24-48 годин." },
+                    { s: "Моніторинг", d: "Перевірка зіниць та координації. При нудоті — негайна госпіталізація." }
+                ]
+            },
+            shin_splints: {
+                title: "Шинсплінт (Медіальний стрес)",
+                type: "badge-safe",
+                typeText: "Типова травма бігунів",
+                bio: "Запалення окістя великогомілкової кістки. Виникає через погану амортизацію взуття або гіперпронацію стопи.",
+                protocol: [
+                    { s: "Зміна покриття", d: "Перехід з асфальту на ґрунт або тартан." },
+                    { s: "Масаж МФР", d: "Прокатка гомілки на фоам-ролері для зняття напруги з камбалоподібного м'яза." }
+                ]
+            },
+            heat_stroke: {
+                title: "Тепловий удар (Hyperthermia)",
+                type: "badge-danger",
+                typeText: "Загроза життю",
+                bio: "Відмова системи терморегуляції. Температура тіла піднімається вище 40°C, що загрожує денатурацією білків.",
+                protocol: [
+                    { s: "Охолодження", d: "Перемістити в тінь. Лід на ділянки паху, шиї та пахв (де проходять великі артерії)." },
+                    { s: "Регідратація", d: "Дробне пиття ізотонічних розчинів. Уникати крижаної води (може викликати спазм)." }
+                ]
+            },
+            cramps: {
+                title: "М'язові судоми",
+                type: "badge-safe",
+                typeText: "Електролітний збій",
+                bio: "Мимовільне скорочення м'яза через дефіцит іонів Магнію та Калію або накопичення продуктів розпаду.",
+                protocol: [
+                    { s: "Статичне розтягування", d: "Плавно розтягніть м'яз і утримуйте 30 секунд. Це активує органи Гольджі, що гальмують скорочення." },
+                    { s: "Електроліти", d: "Прийом мінеральної води з високим вмістом солей." }
+                ]
+            }
+        };
+
+        function loadInjury(id) {
+            const data = injuryDatabase[id];
+            const viewer = document.getElementById('protocol-viewer');
+            
+            // Анімація появи
+            viewer.style.opacity = 0;
+            
+            setTimeout(() => {
+                viewer.innerHTML = `
+                    <div class="emergency-badge ${data.type}">${data.typeText}</div>
+                    <h2 style="font-family: 'Lora', serif; font-size: 2.2rem; margin: 0 0 15px 0;">${data.title}</h2>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; border-left: 3px solid #E2E4DD; padding-left: 20px;">
+                        ${data.bio}
+                    </p>
+                    
+                    <div class="protocol-steps">
+                        <h3 style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; color: var(--accent); margin-bottom: 25px;">Алгоритм дій:</h3>
+                        ${data.protocol.map(step => `
+                            <div class="protocol-step">
+                                <strong>${step.s}</strong>
+                                <p>${step.d}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div style="margin-top: 50px; padding: 20px; background: #FAFAF7; border-radius: 8px; font-size: 0.85rem; color: var(--text-muted);">
+                        <strong>Медичне застереження:</strong> Цей цифровий протокол носить інформаційний характер. При серйозних травмах завжди звертайтеся до кваліфікованого травматолога.
+                    </div>
+                `;
+                viewer.style.opacity = 1;
+            }, 200);
+
+            // Оновлюємо активний елемент у списку
+            document.querySelectorAll('.injury-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.innerText.toLowerCase().includes(data.title.split(' ')[0].toLowerCase())) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Завантажуємо першу травму при старті
+        loadInjury('sprain');
+    </script>
+
+<script src="global.js"></script>
+</body>
+</html>

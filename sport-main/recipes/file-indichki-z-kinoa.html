@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Філе індички з кіноа | Цифровий Атлет</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .recipe-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .recipe-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .recipe-image {
+            background: #E2E4DD;
+            border-radius: 16px;
+            height: 300px;
+            background-image: url('images/file-indichki-kinoa-removebg-preview.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .recipe-info h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .nutrition-item {
+            background: #F2F3F0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .nutrition-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .nutrition-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .ingredients-list, .instructions-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid var(--border-color);
+        }
+        .ingredients-list h2, .instructions-list h2 {
+            font-family: 'Lora', serif;
+            margin-top: 0;
+        }
+        .ingredient-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        .instructions-list ol {
+            padding-left: 20px;
+        }
+        .instructions-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+            .recipe-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Цифровий Атлет.</div>
+            <nav class="main-nav">
+                <a href="../index.html">Філософія</a>
+                <a href="../anatomy.html">Анатомія</a>
+                <a href="../biomechanics.html">Біомеханіка</a>
+                <a href="../science.html">Біохімія</a>
+                <a href="../plan.html">Протокол</a>
+                <a href="../recovery.html">Безпека</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="recipe-container">
+        <a href="../plan.html" class="back-link">← Назад до протоколу</a>
+        
+        <div class="recipe-header">
+            <div class="recipe-image"></div>
+            <div class="recipe-info">
+                <h1>Філе індички з кіноа</h1>
+                <p>Повноцінний обід для атлета: ніжне філе індички, багате на легкозасвоюваний білок та триптофан, у поєднанні з кіноа — суперфудом, що містить усі незамінні амінокислоти. Овочі гриль додають клітковину та вітаміни.</p>
+                
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">520</div>
+                        <div class="nutrition-label">Ккал</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">45г</div>
+                        <div class="nutrition-label">Білки</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">16г</div>
+                        <div class="nutrition-label">Жири</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">48г</div>
+                        <div class="nutrition-label">Вуглеводи</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ingredients-list">
+            <h2>Інгредієнти</h2>
+            <div class="ingredient-item"><span>Філе індички (грудка)</span><span>150 г</span></div>
+            <div class="ingredient-item"><span>Кіноа (суха)</span><span>80 г</span></div>
+            <div class="ingredient-item"><span>Кабачок молодий</span><span>½ шт (100 г)</span></div>
+            <div class="ingredient-item"><span>Перець болгарський</span><span>½ шт (80 г)</span></div>
+            <div class="ingredient-item"><span>Помідори чері</span><span>5-6 шт</span></div>
+            <div class="ingredient-item"><span>Оливкова олія</span><span>2 ст.л.</span></div>
+            <div class="ingredient-item"><span>Часник</span><span>1 зубчик</span></div>
+            <div class="ingredient-item"><span>Сік лимона</span><span>1 ст.л.</span></div>
+            <div class="ingredient-item"><span>Сушений орегано, паприка</span><span>по ½ ч.л.</span></div>
+            <div class="ingredient-item"><span>Сіль, чорний перець</span><span>за смаком</span></div>
+            <div class="ingredient-item"><span>Свіжа зелень (петрушка, кріп)</span><span>для подачі</span></div>
+        </div>
+
+        <div class="instructions-list">
+            <h2>Приготування</h2>
+            <ol>
+                <li><strong>Маринування індички:</strong> Філе індички промийте, обсушіть паперовим рушником. Змішайте 1 ст.л. оливкової олії, лимонний сік, подрібнений часник, паприку, орегано, сіль та перець. Натріть цією сумішшю філе та залиште маринуватися на 15-20 хвилин.</li>
+                <li><strong>Приготування кіноа:</strong> Кіноа ретельно промийте під холодною водою через сито (це прибирає гіркоту сапонінів). Залийте 160 мл води (співвідношення 1:2), доведіть до кипіння, посоліть. Зменшіть вогонь до мінімуму, накрийте кришкою і варіть 15 хвилин. Після вимкнення дайте постояти під кришкою ще 5 хвилин.</li>
+                <li><strong>Підготовка овочів:</strong> Кабачок наріжте кружальцями товщиною 1 см. Болгарський перець — великими смужками. Помідори чері залиште цілими або розріжте навпіл.</li>
+                <li><strong>Смаження індички:</strong> Розігрійте сковороду-гриль або звичайну антипригарну сковороду. Викладіть філе індички і смажте по 4-5 хвилин з кожного боку до золотавої скоринки та повної готовності (внутрішня температура 74°C).</li>
+                <li><strong>Приготування овочів:</strong> На тій самій сковороді або окремо обсмажте кабачки та перець з додаванням 1 ст.л. оливкової олії протягом 3-4 хвилин. В кінці додайте помідори чері та прогрійте ще 1 хвилину.</li>
+                <li><strong>Подача:</strong> На тарілку викладіть порцію кіноа, поруч — нарізане скибочками філе індички та овочі гриль. Посипте свіжою зеленню.</li>
+            </ol>
+        </div>
+
+        <div class="ingredients-list" style="margin-top: 20px;">
+            <h2>💡 Порада атлета</h2>
+            <p>Кіноа можна замінити на булгур, гречку або дикий рис — це змінить глікемічний профіль страви. Для збільшення калорійності (масонабір) додайте 20 г кедрових горіхів або полийте готову страву соусом песто. Індичку можна запекти в духовці при 180°C протягом 20-25 хвилин — так вона буде ще соковитішою.</p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+            Цифровий Атлет &copy; 2026 — Рецепти для здоров'я
+        </div>
+    </footer>
+</body>
+</html>
