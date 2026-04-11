@@ -5,104 +5,305 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Анатомія | Цифровий Атлет</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
     <style>
-        /* Специфічні стилі для 3D інтерфейсу */
-        .anatomy-grid {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 30px;
-            background: white;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            margin-top: 40px;
-            min-height: 600px;
-        }
-
-        .controls-panel {
-            padding: 40px;
-            background: #FAFAF7;
-            border-right: 1px solid var(--border-color);
-        }
-
-        #canvas-container {
-            width: 100%;
-            height: 600px;
-            background: #eee; /* Тимчасовий фон поки вантажиться модель */
-            cursor: grab;
-        }
-
-        .control-group { margin-bottom: 25px; }
-        .control-group h4 { margin-bottom: 15px; font-family: 'Lora', serif; }
-        
-        .toggle-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-
-        .toggle-item input { margin-right: 12px; accent-color: var(--accent); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #FAFAF7; font-family: 'Work Sans', sans-serif; }
+        .site-header { padding: 30px 0; border-bottom: 1px solid #E2E4DD; background: white; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .logo { font-size: 1.2rem; font-weight: 500; text-transform: uppercase; }
+        .main-nav { display: flex; gap: 30px; }
+        .main-nav a { text-decoration: none; color: #6B7262; transition: color 0.2s; }
+        .main-nav a:hover, .main-nav a[style*="accent"] { color: #4A6B48; }
+        .site-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .hero-article { margin: 40px 0 30px; }
+        .meta-info { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #8A9280; margin-bottom: 10px; }
+        .document-title { font-family: 'Lora', serif; font-size: 2.8rem; font-weight: 600; line-height: 1.2; margin-bottom: 15px; }
+        .lead-text { font-size: 1.1rem; color: #5A6252; }
+        .anatomy-grid { display: grid; grid-template-columns: 280px 1fr; gap: 30px; background: white; border-radius: 20px; border: 1px solid #E2E4DD; overflow: hidden; margin: 40px 0; min-height: 600px; }
+        .controls-panel { padding: 30px; background: #FAFAF7; border-right: 1px solid #E2E4DD; }
+        .control-group { margin-bottom: 30px; }
+        .control-group h4 { font-family: 'Lora', serif; margin-bottom: 15px; font-size: 1.1rem; }
+        .toggle-item { display: flex; align-items: center; margin-bottom: 12px; cursor: pointer; font-size: 0.9rem; }
+        .toggle-item input { margin-right: 12px; accent-color: #4A6B48; }
+        #canvas-container { width: 100%; height: 600px; background: #f0f0ea; cursor: grab; position: relative; }
+        .hover-tooltip { position: fixed; background: rgba(20, 22, 18, 0.94); backdrop-filter: blur(12px); color: #f0ede5; padding: 14px 20px; border-radius: 20px; font-family: 'Work Sans', sans-serif; font-size: 0.9rem; max-width: 280px; pointer-events: none; z-index: 10000; border-left: 4px solid #7BA36B; box-shadow: 0 10px 28px rgba(0,0,0,0.25); transition: opacity 0.2s ease; opacity: 0; line-height: 1.45; }
+        .hover-tooltip strong { display: block; font-family: 'Lora', serif; font-size: 1.2rem; margin-bottom: 8px; color: #d9e8d4; }
+        .hover-tooltip small { font-size: 0.75rem; color: #bcb8a8; display: block; margin-top: 8px; }
+        .pdf-buttons { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+        .pdf-btn { background: #4A6B48; color: white; border: none; padding: 10px 18px; border-radius: 8px; cursor: pointer; font-family: 'Work Sans', sans-serif; font-size: 0.85rem; transition: background 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+        .pdf-btn:hover { background: #3A5A38; }
+        .pdf-btn.secondary { background: #6B7262; }
+        .pdf-btn.secondary:hover { background: #5A6252; }
+        .site-footer { text-align: center; padding: 40px 0; border-top: 1px solid #E2E4DD; color: #8A9280; font-size: 0.8rem; }
+        @media (max-width: 800px) { .anatomy-grid { grid-template-columns: 1fr; } .controls-panel { border-right: none; border-bottom: 1px solid #E2E4DD; } }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="container">
-            <div class="logo">Цифровий Атлет.</div>
-            <nav class="main-nav">
-                <a href="index.html">Філософія</a>
-                <a href="anatomy.html" style="color: var(--accent);">Анатомія</a>
-                <a href="biomechanics.html">Біомеханіка</a>
-                <a href="science.html">Біохімія</a>
-                <a href="plan.html" id="nav-protocol" style="display: none; font-weight: 600;">Протокол</a>
-                <a href="recovery.html">Безпека</a>
-            </nav>
-        </div>
-    </header>
+<header class="site-header">
+    <div class="container">
+        <div class="logo">Цифровий Атлет.</div>
+        <nav class="main-nav">
+            <a href="index.html">Філософія</a>
+            <a href="anatomy.html" style="color: #4A6B48;">Анатомія</a>
+            <a href="biomechanics.html">Біомеханіка</a>
+            <a href="science.html">Біохімія</a>
+            <a href="plan.html">Протокол</a>
+            <a href="recovery.html">Безпека</a>
+        </nav>
+    </div>
+</header>
 
 <main class="container">
     <article class="hero-article">
-        <p class="meta-info">Розділ 03 &mdash; Візуалізація структур</p>
+        <p class="meta-info">Розділ 02 — Візуалізація структур</p>
         <h1 class="document-title">Інтерактивна Анатомія</h1>
-        <p class="lead-text">Досліджуйте взаємодію тканин у реальному часі.</p>
+        <p class="lead-text">Наведіть курсор на будь-яку частину тіла — з'явиться детальна інформація.</p>
     </article>
 
-    <div class="anatomy-grid glass-card">
+    <div class="anatomy-grid">
         <div class="controls-panel">
             <div class="control-group">
                 <h4>Візуальні шари</h4>
-                <label class="toggle-item"><input type="checkbox" id="check-skin" checked> Епідерміс</label>
+                <label class="toggle-item"><input type="checkbox" id="check-skin" checked> Епідерміс (шкіра)</label>
                 <label class="toggle-item"><input type="checkbox" id="check-fat" checked> Підшкірний жир</label>
                 <label class="toggle-item"><input type="checkbox" id="check-muscle" checked> М'язові волокна</label>
+                <label class="toggle-item"><input type="checkbox" id="check-bone" checked> Кісткова основа</label>
             </div>
+            <div class="pdf-buttons">
+                <button class="pdf-btn" id="download-all-facts">📄 Завантажити всі факти (PDF)</button>
+                <button class="pdf-btn secondary" id="download-head-fact">🧠 Факти: Голова</button>
+                <button class="pdf-btn secondary" id="download-torso-fact">💪 Факти: Тулуб</button>
+                <button class="pdf-btn secondary" id="download-arms-fact">🦾 Факти: Руки</button>
+                <button class="pdf-btn secondary" id="download-legs-fact">🦵 Факти: Ноги</button>
+            </div>
+        </div>
+        <div id="canvas-container"></div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">Цифровий Атлет &copy; 2026 — Анатомічний атлас v2.0</div>
+</footer>
+
+<script>
+    (function() {
+        const container = document.getElementById('canvas-container');
+        const toggles = {
+            skin: document.getElementById('check-skin'),
+            fat: document.getElementById('check-fat'),
+            muscle: document.getElementById('check-muscle'),
+            bone: document.getElementById('check-bone')
+        };
+
+        // Tooltip element
+        const tooltip = document.createElement('div');
+        tooltip.className = 'hover-tooltip';
+        document.body.appendChild(tooltip);
+
+        // Anatomical database with extended info for PDFs
+        const anatomyDB = {
+            head: { title: "Голова та мозок", desc: "Череп захищає центральну нервову систему. Мозок споживає ~20% енергії організму.", tips: "Пийте воду • Спіть 7–9 год • Тренуйте когнітивні функції", details: "Череп складається з 22 кісток. Мозок містить ~86 мільярдів нейронів. Кровопостачання забезпечується сонними артеріями." },
+            torso: { title: "Тулуб (кор)", desc: "Серце, легені, діафрагма, органи травлення. Стабільність кора — ключ до потужних рухів.", tips: "Дихальні вправи • Планк • Контроль постави", details: "Грудна клітка захищає серце та легені. Хребет має 33 хребці. Діафрагма — головний дихальний м'яз." },
+            arm_l: { title: "Ліва рука", desc: "Плечова кістка, лікоть, променева та ліктьова кістки. Відповідає за маніпуляції.", tips: "Розтяжка трицепса • Ротаційні вправи • Хват", details: "Плечовий суглоб — найрухоміший в тілі. Ліктьовий суглоб дозволяє згинання/розгинання. Кисть має 27 кісток." },
+            arm_r: { title: "Права рука", desc: "Аналогічна будова. Симетричний розвиток важливий для здоров'я плечей.", tips: "Односторонні жими • Розминка зап'ястя", details: "Для атлетів важливо тренувати обидві руки рівномірно, щоб уникнути дисбалансу." },
+            leg_l: { title: "Ліва нога", desc: "Стегнова кістка, гомілка, стопа. Найбільші м'язи: сідничні, квадрицепси, литкові.", tips: "Присідання • Випади • Мобільність гомілкостопу", details: "Стегнова кістка — найдовша кістка тіла. Колінний суглоб витримує навантаження до 5-7 разів більше ваги тіла." },
+            leg_r: { title: "Права нога", desc: "Симетричне навантаження запобігає травмам тазового поясу.", tips: "Пліометрія • Розтяжка підколінних сухожиль", details: "Стопа має 26 кісток і 33 суглоби. П'яткова кістка — найбільша в стопі." }
+        };
+
+        // PDF Generation function
+        async function generatePDF(content, filename, title) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ unit: 'mm', format: 'a4' });
             
-            <div class="control-group" style="margin-top: 40px; border-top: 1px solid #ddd;">
-                <p style="font-size: 0.8rem; color: #666;"><strong>Порада:</strong> Клікніть на шар, щоб дізнатися деталі.</p>
-            </div>
-        </div>
+            // Add header
+            doc.setFillColor(74, 107, 72);
+            doc.rect(0, 0, 210, 30, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(18);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Цифровий Атлет', 20, 15);
+            doc.setFontSize(10);
+            doc.setFont('helvetica', 'normal');
+            doc.text('Анатомічний довідник', 20, 23);
+            
+            // Title
+            doc.setTextColor(74, 107, 72);
+            doc.setFontSize(22);
+            doc.setFont('helvetica', 'bold');
+            doc.text(title, 20, 50);
+            
+            // Content
+            doc.setTextColor(0, 0, 0);
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            
+            let y = 70;
+            const pageHeight = 280;
+            
+            for (const section of content) {
+                if (y > 250) {
+                    doc.addPage();
+                    y = 20;
+                }
+                doc.setFontSize(14);
+                doc.setFont('helvetica', 'bold');
+                doc.text(section.title, 20, y);
+                y += 8;
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'normal');
+                const lines = doc.splitTextToSize(section.text, 170);
+                doc.text(lines, 20, y);
+                y += (lines.length * 6) + 8;
+            }
+            
+            // Footer
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            doc.text('© Цифровий Атлет — Науково-освітній проєкт', 20, 280);
+            
+            doc.save(filename);
+        }
+        
+        // Download all facts
+        document.getElementById('download-all-facts').addEventListener('click', async () => {
+            const content = [
+                { title: '🧠 Голова та мозок', text: `${anatomyDB.head.desc}\n\nРекомендації: ${anatomyDB.head.tips}\n\nДеталі: ${anatomyDB.head.details}` },
+                { title: '💪 Тулуб', text: `${anatomyDB.torso.desc}\n\nРекомендації: ${anatomyDB.torso.tips}\n\nДеталі: ${anatomyDB.torso.details}` },
+                { title: '🦾 Верхні кінцівки', text: `Ліва рука: ${anatomyDB.arm_l.desc}\nПрава рука: ${anatomyDB.arm_r.desc}\n\nРекомендації: ${anatomyDB.arm_l.tips}\n\nДеталі: ${anatomyDB.arm_l.details}` },
+                { title: '🦵 Нижні кінцівки', text: `Ліва нога: ${anatomyDB.leg_l.desc}\nПрава нога: ${anatomyDB.leg_r.desc}\n\nРекомендації: ${anatomyDB.leg_l.tips}\n\nДеталі: ${anatomyDB.leg_l.details}` }
+            ];
+            generatePDF(content, 'anatomy_fact_sheets.pdf', 'Анатомічний атлас: всі системи');
+        });
+        
+        // Individual downloads
+        document.getElementById('download-head-fact').addEventListener('click', async () => {
+            generatePDF([{ title: 'Голова та мозок', text: `${anatomyDB.head.desc}\n\nРекомендації для атлетів:\n${anatomyDB.head.tips}\n\nДетальна інформація:\n${anatomyDB.head.details}` }], 'head_anatomy.pdf', 'Анатомія голови');
+        });
+        document.getElementById('download-torso-fact').addEventListener('click', async () => {
+            generatePDF([{ title: 'Тулуб (Core)', text: `${anatomyDB.torso.desc}\n\nРекомендації для атлетів:\n${anatomyDB.torso.tips}\n\nДетальна інформація:\n${anatomyDB.torso.details}` }], 'torso_anatomy.pdf', 'Анатомія тулуба');
+        });
+        document.getElementById('download-arms-fact').addEventListener('click', async () => {
+            generatePDF([{ title: 'Верхні кінцівки', text: `Ліва рука: ${anatomyDB.arm_l.desc}\nПрава рука: ${anatomyDB.arm_r.desc}\n\nРекомендації:\n${anatomyDB.arm_l.tips}\n\nДеталі:\n${anatomyDB.arm_l.details}` }], 'arms_anatomy.pdf', 'Анатомія рук');
+        });
+        document.getElementById('download-legs-fact').addEventListener('click', async () => {
+            generatePDF([{ title: 'Нижні кінцівки', text: `Ліва нога: ${anatomyDB.leg_l.desc}\nПрава нога: ${anatomyDB.leg_r.desc}\n\nРекомендації:\n${anatomyDB.leg_l.tips}\n\nДеталі:\n${anatomyDB.leg_l.details}` }], 'legs_anatomy.pdf', 'Анатомія ніг');
+        });
 
-        <div id="canvas-container" style="position: relative; width: 100%; height: 600px;">
-            <div id="info-panel" class="hidden" style="position: absolute; top: 20px; right: 20px; z-index: 100;">
-                <button id="close-btn">&times;</button>
-                <h3 id="info-title"></h3>
-                <p id="info-desc"></p>
-                <ul id="info-tips"></ul>
-            </div>
-        </div>
-    </div> </main>
-
-    <footer class="site-footer" style="margin-top: 100px;">
-        <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.8rem;">
-            Цифровий Атлет &copy; 2026 — Анатомічний атлас v1.0
-        </div>
-    </footer>
-
-    <script src="anatomy.js"></script>
-<script src="global.js"></script>
+        // Three.js code (same as before, shortened for brevity)
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xf0f0ea);
+        const rect = container.getBoundingClientRect();
+        const camera = new THREE.PerspectiveCamera(45, rect.width / rect.height, 0.1, 1000);
+        camera.position.set(2.2, 1.6, 4.2);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(rect.width, rect.height);
+        container.appendChild(renderer.domElement);
+        
+        // Lighting, model creation (same as before)
+        const ambient = new THREE.AmbientLight(0x5a5a6e, 0.6);
+        scene.add(ambient);
+        const mainLight = new THREE.DirectionalLight(0xfff5e0, 1.1);
+        mainLight.position.set(3, 5, 2);
+        scene.add(mainLight);
+        
+        function createLayerGroup(material, visible = true) {
+            const group = new THREE.Group();
+            const parts = [
+                { type: 'sphere', scale: [0.34, 0.34, 0.34], pos: [0, 1.48, 0], id: 'head' },
+                { type: 'cylinder', scale: [0.48, 0.58, 0.88], pos: [0, 0.72, 0], id: 'torso' },
+                { type: 'cylinder', scale: [0.17, 0.17, 0.56], pos: [-0.68, 1.22, 0], id: 'arm_l' },
+                { type: 'cylinder', scale: [0.17, 0.17, 0.56], pos: [0.68, 1.22, 0], id: 'arm_r' },
+                { type: 'cylinder', scale: [0.14, 0.14, 0.52], pos: [-0.68, 0.76, 0], id: 'arm_l' },
+                { type: 'cylinder', scale: [0.14, 0.14, 0.52], pos: [0.68, 0.76, 0], id: 'arm_r' },
+                { type: 'cylinder', scale: [0.29, 0.25, 0.72], pos: [-0.36, -0.18, 0], id: 'leg_l' },
+                { type: 'cylinder', scale: [0.29, 0.25, 0.72], pos: [0.36, -0.18, 0], id: 'leg_r' },
+                { type: 'cylinder', scale: [0.21, 0.19, 0.62], pos: [-0.36, -0.78, 0], id: 'leg_l' },
+                { type: 'cylinder', scale: [0.21, 0.19, 0.62], pos: [0.36, -0.78, 0], id: 'leg_r' }
+            ];
+            parts.forEach(p => {
+                let geom = p.type === 'sphere' ? new THREE.SphereGeometry(p.scale[0], 32, 32) : new THREE.CylinderGeometry(p.scale[0], p.scale[1], p.scale[2], 24);
+                const mesh = new THREE.Mesh(geom, material);
+                mesh.position.set(p.pos[0], p.pos[1], p.pos[2]);
+                mesh.userData = { partId: p.id };
+                group.add(mesh);
+            });
+            group.visible = visible;
+            return group;
+        }
+        
+        const boneMat = new THREE.MeshStandardMaterial({ color: 0xdce3e8, roughness: 0.45 });
+        const muscleMat = new THREE.MeshStandardMaterial({ color: 0xb55a5a, roughness: 0.55 });
+        const fatMat = new THREE.MeshStandardMaterial({ color: 0xf5cf9a, roughness: 0.7, transparent: true, opacity: 0.5 });
+        const skinMat = new THREE.MeshStandardMaterial({ color: 0xf5d7b5, roughness: 0.4, transparent: true, opacity: 0.4 });
+        
+        const boneGroup = createLayerGroup(boneMat, true);
+        const muscleGroup = createLayerGroup(muscleMat, true);
+        const fatGroup = createLayerGroup(fatMat, true);
+        const skinGroup = createLayerGroup(skinMat, true);
+        
+        const fullModel = new THREE.Group();
+        fullModel.add(boneGroup, muscleGroup, fatGroup, skinGroup);
+        scene.add(fullModel);
+        fullModel.position.y = -0.25;
+        fullModel.rotation.y = 0.6;
+        
+        toggles.bone.addEventListener('change', e => boneGroup.visible = e.target.checked);
+        toggles.muscle.addEventListener('change', e => muscleGroup.visible = e.target.checked);
+        toggles.fat.addEventListener('change', e => fatGroup.visible = e.target.checked);
+        toggles.skin.addEventListener('change', e => skinGroup.visible = e.target.checked);
+        
+        // Raycaster for hover (same as before)
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+        let hoveredPart = null;
+        
+        container.addEventListener('mousemove', (event) => {
+            const rect = container.getBoundingClientRect();
+            mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+            mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+            raycaster.setFromCamera(mouse, camera);
+            const allMeshes = [];
+            [boneGroup, muscleGroup, fatGroup, skinGroup].forEach(group => { if (group.visible) group.children.forEach(child => allMeshes.push(child)); });
+            const intersects = raycaster.intersectObjects(allMeshes);
+            if (intersects.length > 0) {
+                const hit = intersects[0].object;
+                const partId = hit.userData.partId;
+                const data = anatomyDB[partId];
+                if (data && hoveredPart !== partId) {
+                    hoveredPart = partId;
+                    tooltip.style.opacity = '1';
+                    tooltip.innerHTML = `<strong>${data.title}</strong>${data.desc}<br><small>✨ ${data.tips}</small>`;
+                }
+                tooltip.style.left = (event.clientX + 18) + 'px';
+                tooltip.style.top = (event.clientY + 18) + 'px';
+            } else if (hoveredPart !== null) {
+                hoveredPart = null;
+                tooltip.style.opacity = '0';
+            }
+        });
+        
+        container.addEventListener('mouseleave', () => { tooltip.style.opacity = '0'; hoveredPart = null; });
+        
+        let isDragging = false, lastX = 0, lastY = 0;
+        container.addEventListener('mousedown', (e) => { isDragging = true; lastX = e.clientX; lastY = e.clientY; container.style.cursor = 'grabbing'; });
+        window.addEventListener('mouseup', () => { isDragging = false; container.style.cursor = 'grab'; });
+        container.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                fullModel.rotation.y += (e.clientX - lastX) * 0.007;
+                fullModel.rotation.x += (e.clientY - lastY) * 0.007;
+                fullModel.rotation.x = Math.max(-0.9, Math.min(0.9, fullModel.rotation.x));
+                lastX = e.clientX; lastY = e.clientY;
+            }
+        });
+        
+        function animate() { requestAnimationFrame(animate); renderer.render(scene, camera); }
+        animate();
+        window.addEventListener('resize', () => { const newRect = container.getBoundingClientRect(); camera.aspect = newRect.width / newRect.height; camera.updateProjectionMatrix(); renderer.setSize(newRect.width, newRect.height); });
+    })();
+</script>
 </body>
 </html>

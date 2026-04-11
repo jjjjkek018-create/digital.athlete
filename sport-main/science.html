@@ -4,115 +4,424 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Біохімія та Метаболізм | Цифровий Атлет</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        .advanced-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media(min-width: 992px) { .advanced-grid { grid-template-columns: 400px 1fr; } }
-        
-        .metric-card { background: #F2F3F0; padding: 25px; border-radius: 12px; text-align: center; border: 1px solid var(--border-color); }
-        .metric-value { font-size: 2.5rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 5px; }
-        .metric-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-        
-        .custom-input { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; font-family: inherit; }
-        .hint-text { font-size: 0.75rem; color: #8A9280; display: block; margin-bottom: 5px; }
-
-        .info-box { 
-            background: #fff; 
-            padding: 15px; 
-            border-radius: 8px; 
-            border-left: 3px solid var(--accent); 
-            margin-bottom: 20px; 
+        /* additional styles for the 3D customizer */
+        .customizer-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 60px 0;
+            background: white;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+        .customizer-controls {
+            padding: 30px;
+            background: #FAFAF7;
+        }
+        .customizer-canvas {
+            background: #e8eae2;
+            min-height: 500px;
+            position: relative;
+        }
+        #body-canvas {
+            width: 100%;
+            height: 500px;
+            display: block;
+        }
+        .slider-group {
+            margin-bottom: 25px;
+        }
+        .slider-group label {
+            display: flex;
+            justify-content: space-between;
             font-size: 0.85rem;
-            display: none; /* Показується через JS */
+            margin-bottom: 8px;
+            color: var(--text-muted);
         }
-
-        #generate-plan-btn {
-            width: 100%; padding: 18px; background: var(--accent); color: white;
-            border: none; border-radius: 8px; cursor: pointer; font-weight: 600;
-            transition: opacity 0.3s;
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent);
         }
-        #generate-plan-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .preset-buttons {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .preset-btn {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+        }
+        .preset-btn:hover, .preset-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .value-display {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        @media (max-width: 900px) {
+            .customizer-section { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="container">
-            <div class="logo">Цифровий Атлет.</div>
-            <nav class="main-nav">
-                <a href="index.html">Філософія</a>
-                <a href="anatomy.html">Анатомія</a>
-                <a href="biomechanics.html">Біомеханіка</a>
-                <a href="science.html" style="color: var(--accent);">Біохімія</a>
-                <a href="plan.html" id="nav-protocol" style="display: none;">Протокол</a>
-                <a href="recovery.html">Безпека</a>
-            </nav>
+<header class="site-header">
+    <div class="container">
+        <div class="logo">Цифровий Атлет.</div>
+        <nav class="main-nav">
+            <a href="index.html">Філософія</a>
+            <a href="anatomy.html">Анатомія</a>
+            <a href="biomechanics.html">Біомеханіка</a>
+            <a href="science.html" style="color: var(--accent);">Біохімія</a>
+            <a href="plan.html" id="nav-protocol" style="display: none;">Протокол</a>
+            <a href="recovery.html">Безпека</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <article class="hero-article">
+        <p class="meta-info">Розділ 04 — Енергетичний обмін</p>
+        <h1 class="document-title">Біохімічний термінал + 3D Композиція тіла</h1>
+        <p class="lead-text">Розрахуйте метаболізм і візуалізуйте, як змінюються пропорції тіла при різних параметрах.</p>
+    </article>
+
+    <!-- Existing metabolic calculator -->
+    <section class="advanced-grid" style="display: grid; grid-template-columns: 400px 1fr; gap: 30px; margin-bottom: 60px;">
+        <div class="glass-card" style="padding: 30px;">
+            <h3 style="margin-top: 0; font-family: 'Lora', serif;">Антропометрія</h3>
+            <label class="hint-text">Стать</label>
+            <select id="gender" class="custom-input" style="width:100%; padding:12px; margin-bottom:15px; border:1px solid var(--border-color); border-radius:8px;">
+                <option value="male">Чоловік</option>
+                <option value="female">Жінка</option>
+            </select>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div><label class="hint-text">Вага (кг)</label><input type="number" id="weight" class="custom-input" placeholder="75"></div>
+                <div><label class="hint-text">Зріст (см)</label><input type="number" id="height" class="custom-input" placeholder="180"></div>
+            </div>
+            <label class="hint-text">Вік</label>
+            <input type="number" id="age" class="custom-input" placeholder="25">
+            <label class="hint-text">Жир % (опціонально)</label>
+            <input type="number" id="bf" class="custom-input" placeholder="15">
+            <label class="hint-text">Активність</label>
+            <select id="activity" class="custom-input">
+                <option value="1.2">Сидячий спосіб</option>
+                <option value="1.375">Легка (1-3 тренування)</option>
+                <option value="1.55">Середня (3-5 тренувань)</option>
+                <option value="1.725">Висока (6-7 тренувань)</option>
+            </select>
+            <button id="generate-plan-btn" class="btn-action" style="margin-top:20px;" disabled>Сформувати протокол</button>
         </div>
-    </header>
+        <div class="results-display" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="metric-card"><div id="out-bf" class="metric-value">0%</div><div class="metric-label">Жирова маса</div></div>
+            <div class="metric-card"><div id="out-lbm" class="metric-value">0</div><div class="metric-label">Суха маса (кг)</div></div>
+            <div class="metric-card" style="grid-column: span 2;"><div id="out-bmr" class="metric-value">0</div><div class="metric-label">Базальний метаболізм (BMR)</div></div>
+            <div class="metric-card" style="grid-column: span 2; background: #222; color: white;"><div id="out-tdee" class="metric-value" style="color:#fff;">0</div><div class="metric-label">Денна витрата (TDEE)</div></div>
+        </div>
+    </section>
 
-    <main class="container">
-        <article class="hero-article">
-            <p class="meta-info">Розділ 04 &mdash; Енергетичний обмін</p>
-            <h1 class="document-title">Біохімічний термінал</h1>
-            <p class="lead-text">Розрахуйте метаболічний профіль на основі формули Кетча-МакАрдла.</p>
-        </article>
-
-        <section class="advanced-grid" style="margin-bottom: 60px;">
-            <div class="glass-card" style="padding: 30px;">
-                <h3 style="margin-top: 0; font-family: 'Lora', serif;">Антропометрія</h3>
-                
-                <label class="hint-text">Стать</label>
-                <select id="gender" class="custom-input">
-                    <option value="male">Чоловік</option>
-                    <option value="female">Жінка</option>
-                </select>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <div>
-                        <label class="hint-text">Вага (кг)</label>
-                        <input type="number" id="weight" class="custom-input" placeholder="75">
-                    </div>
-                    <div>
-                        <label class="hint-text">Зріст (см)</label>
-                        <input type="number" id="height" class="custom-input" placeholder="180">
-                    </div>
-                </div>
-
-                <label class="hint-text">Вік</label>
-                <input type="number" id="age" class="custom-input" placeholder="25">
-
-                <label class="hint-text">Жир % (залиште порожнім для авторозрахунку)</label>
-                <input type="number" id="bf" class="custom-input" placeholder="15">
-
-                <label class="hint-text">Активність</label>
-                <select id="activity" class="custom-input">
-                    <option value="1.2">Сидячий спосіб</option>
-                    <option value="1.375">Легка (1-3 тренування)</option>
-                    <option value="1.55">Середня (3-5 тренувань)</option>
-                    <option value="1.725">Висока (6-7 тренувань)</option>
-                </select>
-
-                <div id="tooltip-bf" class="info-box"></div>
-                <div id="tooltip-lbm" class="info-box"></div>
-
-                <button id="generate-plan-btn" disabled>Сформувати протокол</button>
+    <!-- NEW: 3D Body Shape Customizer -->
+    <section class="customizer-section">
+        <div class="customizer-controls">
+            <h3 style="font-family: 'Lora', serif; margin-top: 0;">🎨 Візуалізація пропорцій тіла</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Змінюйте параметри — модель змінюється в реальному часі.</p>
+            
+            <div class="slider-group">
+                <label>Зріст (см): <span id="height-val" class="value-display">170</span></label>
+                <input type="range" id="height-slider" min="140" max="210" step="1" value="170">
             </div>
-
-            <div class="results-display" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div class="metric-card"><div id="out-bf" class="metric-value">0%</div><div class="metric-label">Жирова маса</div></div>
-                <div class="metric-card"><div id="out-lbm" class="metric-value">0</div><div class="metric-label">Суха маса (кг)</div></div>
-                <div class="metric-card" style="grid-column: span 2;"><div id="out-bmr" class="metric-value">0</div><div class="metric-label">Базальний метаболізм (BMR)</div></div>
-                <div class="metric-card" style="grid-column: span 2; background: #222; color: white;">
-                    <div id="out-tdee" class="metric-value" style="color: #fff;">0</div>
-                    <div class="metric-label" style="color: #888;">Денна витрата (TDEE)</div>
-                </div>
+            <div class="slider-group">
+                <label>Вага / ширина (кг): <span id="width-val" class="value-display">70</span></label>
+                <input type="range" id="width-slider" min="40" max="130" step="1" value="70">
             </div>
-        </section>
-    </main>
+            <div class="slider-group">
+                <label>М'язова маса (тонус): <span id="muscle-val" class="value-display">0.5</span></label>
+                <input type="range" id="muscle-slider" min="0.3" max="1.2" step="0.01" value="0.5">
+            </div>
+            
+            <div class="preset-buttons">
+                <div class="preset-btn" data-preset="ectomorph">🕊️ Ектоморф (тонкий)</div>
+                <div class="preset-btn" data-preset="mesomorph">⚡ Мезоморф (атлетичний)</div>
+                <div class="preset-btn" data-preset="endomorph">🍂 Ендоморф (широкий)</div>
+            </div>
+            <div style="margin-top: 20px; font-size: 0.75rem; color: #888;">
+                💡 <strong>Порада:</strong> М'язова маса впливає на об'єм рук, грудей та ніг.
+            </div>
+            <div style="margin-top: 20px;">
+                <button id="save-composition-btn" class="btn-action" style="background: #4A6B48; padding: 10px;">💾 Зберегти композицію</button>
+                <button id="load-composition-btn" class="btn-action" style="background: #6B7262; padding: 10px; margin-top: 10px;">📂 Завантажити останню</button>
+            </div>
+        </div>
+        <div class="customizer-canvas">
+            <canvas id="body-canvas"></canvas>
+        </div>
+    </section>
+</main>
 
-    <script src="science.js"></script>
-    <!-- ДОДАНО: глобальний скрипт для оновлення навігації -->
-    <script src="global.js"></script>
+<footer class="site-footer">
+    <div class="container" style="text-align: center; padding: 40px 0; border-top: 1px solid var(--border-color); color: var(--text-muted);">
+        Цифровий Атлет &copy; 2026 — Біохімія + 3D Композиція
+    </div>
+</footer>
+
+<script src="global.js"></script>
+<script>
+    (function() {
+        // --- Metabolic calculator logic (existing) ---
+        const inputs = {
+            gender: document.getElementById('gender'),
+            weight: document.getElementById('weight'),
+            height: document.getElementById('height'),
+            age: document.getElementById('age'),
+            bf: document.getElementById('bf'),
+            activity: document.getElementById('activity')
+        };
+        const outputs = {
+            bf: document.getElementById('out-bf'),
+            lbm: document.getElementById('out-lbm'),
+            bmr: document.getElementById('out-bmr'),
+            tdee: document.getElementById('out-tdee')
+        };
+        const generateBtn = document.getElementById('generate-plan-btn');
+
+        function calculateMetabolism() {
+            const w = parseFloat(inputs.weight.value);
+            const h = parseFloat(inputs.height.value);
+            const a = parseFloat(inputs.age.value);
+            const act = parseFloat(inputs.activity.value);
+            let bf = parseFloat(inputs.bf.value);
+            if (w > 10 && h > 50 && a > 10) {
+                if (isNaN(bf) || bf <= 0) {
+                    const bmi = w / ((h/100) ** 2);
+                    bf = (1.20 * bmi) + (0.23 * a) - (10.8 * (inputs.gender.value === 'male' ? 1 : 0)) - 5.4;
+                    bf = Math.max(5, Math.min(50, bf));
+                }
+                const lbm = w * (1 - (bf / 100));
+                const bmr = 370 + (21.6 * lbm);
+                const tdee = bmr * act;
+                outputs.bf.innerText = bf.toFixed(1) + '%';
+                outputs.lbm.innerText = lbm.toFixed(1) + ' кг';
+                outputs.bmr.innerText = Math.round(bmr);
+                outputs.tdee.innerText = Math.round(tdee) + ' ккал';
+                const stats = { tdee, lbm, bf, gender: inputs.gender.value, goal: bf > 22 ? 'cut' : (bf < 12 ? 'bulk' : 'recomp') };
+                localStorage.setItem('athleteStats', JSON.stringify(stats));
+                generateBtn.disabled = false;
+                if(window.updateNavVisibility) window.updateNavVisibility();
+            } else generateBtn.disabled = true;
+        }
+        Object.values(inputs).forEach(el => el.addEventListener('input', calculateMetabolism));
+        generateBtn.addEventListener('click', () => window.location.href = 'plan.html');
+        calculateMetabolism();
+
+        // --- 3D Body Shape Customizer ---
+        const canvas = document.getElementById('body-canvas');
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xe8eae2);
+        const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+        camera.position.set(0, 1.2, 3.5);
+        camera.lookAt(0, 1, 0);
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        
+        function resizeCanvas() {
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Lighting
+        const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambient);
+        const mainLight = new THREE.DirectionalLight(0xfff5e0, 1);
+        mainLight.position.set(2, 3, 2);
+        scene.add(mainLight);
+        const fillLight = new THREE.PointLight(0xc6a87b, 0.4);
+        fillLight.position.set(0, 1, 2);
+        scene.add(fillLight);
+
+        // Create a group for the body parts
+        const bodyGroup = new THREE.Group();
+        scene.add(bodyGroup);
+
+        // We'll create simplified body parts that can be scaled individually
+        // Parts: torso, head, upper arms, forearms, thighs, calves
+        // Materials
+        const skinMat = new THREE.MeshStandardMaterial({ color: 0xf5d7b5, roughness: 0.4 });
+        
+        // Helper to add a part
+        function addPart(parent, type, scale, pos, name) {
+            let geom;
+            if (type === 'sphere') geom = new THREE.SphereGeometry(scale[0], 32, 32);
+            else geom = new THREE.CylinderGeometry(scale[0], scale[1], scale[2], 24);
+            const mesh = new THREE.Mesh(geom, skinMat);
+            mesh.position.set(pos[0], pos[1], pos[2]);
+            mesh.userData = { name };
+            parent.add(mesh);
+            return mesh;
+        }
+
+        // Base proportions (neutral)
+        const parts = {
+            head: null, torso: null, 
+            armL_up: null, armR_up: null, armL_lo: null, armR_lo: null,
+            legL_up: null, legR_up: null, legL_lo: null, legR_lo: null
+        };
+
+        // Create with default scales
+        function buildBody() {
+            while(bodyGroup.children.length) bodyGroup.remove(bodyGroup.children[0]);
+            parts.head = addPart(bodyGroup, 'sphere', [0.32, 0.32, 0.32], [0, 1.48, 0], 'head');
+            parts.torso = addPart(bodyGroup, 'cylinder', [0.45, 0.55, 0.85], [0, 0.72, 0], 'torso');
+            parts.armL_up = addPart(bodyGroup, 'cylinder', [0.15, 0.15, 0.55], [-0.65, 1.22, 0], 'arm');
+            parts.armR_up = addPart(bodyGroup, 'cylinder', [0.15, 0.15, 0.55], [0.65, 1.22, 0], 'arm');
+            parts.armL_lo = addPart(bodyGroup, 'cylinder', [0.12, 0.12, 0.5], [-0.65, 0.76, 0], 'arm');
+            parts.armR_lo = addPart(bodyGroup, 'cylinder', [0.12, 0.12, 0.5], [0.65, 0.76, 0], 'arm');
+            parts.legL_up = addPart(bodyGroup, 'cylinder', [0.26, 0.22, 0.7], [-0.35, -0.18, 0], 'leg');
+            parts.legR_up = addPart(bodyGroup, 'cylinder', [0.26, 0.22, 0.7], [0.35, -0.18, 0], 'leg');
+            parts.legL_lo = addPart(bodyGroup, 'cylinder', [0.18, 0.16, 0.62], [-0.35, -0.78, 0], 'leg');
+            parts.legR_lo = addPart(bodyGroup, 'cylinder', [0.18, 0.16, 0.62], [0.35, -0.78, 0], 'leg');
+        }
+        buildBody();
+
+        // Sliders and values
+        const heightSlider = document.getElementById('height-slider');
+        const widthSlider = document.getElementById('width-slider');
+        const muscleSlider = document.getElementById('muscle-slider');
+        const heightVal = document.getElementById('height-val');
+        const widthVal = document.getElementById('width-val');
+        const muscleVal = document.getElementById('muscle-val');
+        
+        function updateBodyShape() {
+            const h = parseFloat(heightSlider.value); // height in cm
+            const w = parseFloat(widthSlider.value);  // "weight" factor for width
+            const m = parseFloat(muscleSlider.value); // muscle mass factor
+            
+            heightVal.innerText = h;
+            widthVal.innerText = w;
+            muscleVal.innerText = m.toFixed(2);
+            
+            // Scale factors based on height (affects Y scaling of torso and limbs)
+            const heightFactor = h / 170; // 170cm as baseline
+            // Width factor (from weight slider, affects X and Z scales)
+            const widthFactor = 0.6 + (w / 130) * 0.8; // map 40-130kg to 0.7-1.4
+            // Muscle factor adds extra volume to arms, chest, legs
+            const muscleFactor = 0.7 + (m - 0.3) * 0.8;
+            
+            // Torso: scale Y by heightFactor, X and Z by widthFactor * muscleFactor slightly
+            parts.torso.scale.set(widthFactor * (0.9 + m*0.2), heightFactor, widthFactor * (0.9 + m*0.2));
+            // Head: scale uniformly by heightFactor but not too much
+            parts.head.scale.setScalar(heightFactor * 0.95);
+            // Arms: scale Y by heightFactor, X/Z by widthFactor * muscleFactor
+            const armScaleXZ = widthFactor * (0.8 + m*0.4);
+            const armScaleY = heightFactor;
+            [parts.armL_up, parts.armR_up, parts.armL_lo, parts.armR_lo].forEach(arm => {
+                if(arm) arm.scale.set(armScaleXZ, armScaleY, armScaleXZ);
+            });
+            // Legs: similar but stronger width response
+            const legScaleXZ = widthFactor * (0.8 + m*0.5);
+            const legScaleY = heightFactor;
+            [parts.legL_up, parts.legR_up, parts.legL_lo, parts.legR_lo].forEach(leg => {
+                if(leg) leg.scale.set(legScaleXZ, legScaleY, legScaleXZ);
+            });
+            
+            // Adjust positions to keep feet on ground
+            const yOffset = (heightFactor - 1) * 0.2;
+            bodyGroup.position.y = -0.25 + yOffset;
+        }
+        
+        heightSlider.addEventListener('input', updateBodyShape);
+        widthSlider.addEventListener('input', updateBodyShape);
+        muscleSlider.addEventListener('input', updateBodyShape);
+        
+        // Presets
+        const presetBtns = document.querySelectorAll('.preset-btn');
+        presetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const preset = btn.dataset.preset;
+                if (preset === 'ectomorph') {
+                    heightSlider.value = 180; widthSlider.value = 65; muscleSlider.value = 0.45;
+                } else if (preset === 'mesomorph') {
+                    heightSlider.value = 175; widthSlider.value = 80; muscleSlider.value = 0.85;
+                } else if (preset === 'endomorph') {
+                    heightSlider.value = 165; widthSlider.value = 95; muscleSlider.value = 0.6;
+                }
+                updateBodyShape();
+                presetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+        
+        // Save/Load composition to localStorage
+        const saveBtn = document.getElementById('save-composition-btn');
+        const loadBtn = document.getElementById('load-composition-btn');
+        saveBtn.addEventListener('click', () => {
+            const composition = {
+                height: heightSlider.value,
+                width: widthSlider.value,
+                muscle: muscleSlider.value,
+                preset: document.querySelector('.preset-btn.active')?.dataset.preset || 'custom'
+            };
+            localStorage.setItem('bodyComposition', JSON.stringify(composition));
+            alert('Композицію збережено!');
+        });
+        loadBtn.addEventListener('click', () => {
+            const saved = localStorage.getItem('bodyComposition');
+            if (saved) {
+                const comp = JSON.parse(saved);
+                heightSlider.value = comp.height;
+                widthSlider.value = comp.width;
+                muscleSlider.value = comp.muscle;
+                updateBodyShape();
+                alert('Композицію завантажено');
+            } else alert('Немає збережених даних');
+        });
+        
+        // Initial update
+        updateBodyShape();
+        
+        // Simple rotation on drag (optional)
+        let isDraggingBody = false;
+        let lastMouseX = 0;
+        canvas.addEventListener('mousedown', (e) => {
+            isDraggingBody = true;
+            lastMouseX = e.clientX;
+            canvas.style.cursor = 'grabbing';
+        });
+        window.addEventListener('mouseup', () => {
+            isDraggingBody = false;
+            canvas.style.cursor = 'default';
+        });
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDraggingBody) {
+                const delta = e.clientX - lastMouseX;
+                bodyGroup.rotation.y += delta * 0.005;
+                lastMouseX = e.clientX;
+            }
+        });
+        
+        // Animation loop
+        function animateBody() {
+            requestAnimationFrame(animateBody);
+            renderer.render(scene, camera);
+        }
+        animateBody();
+    })();
+</script>
 </body>
 </html>
